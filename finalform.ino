@@ -45,9 +45,14 @@ void loop() {
   atch();
   logic(a,b,c,d,e,ret);
   if(master==1)
+  {
     rotate(zero);
-  else
+    digitalWrite(feedback,0);
+  }
+  else if(a+b+c+d+e>50)
     rotate(ret);
+  else
+    digitalWrite(feedback,0);
   detch();
   
 }
@@ -99,5 +104,6 @@ int logic(int a, int b, int c, int d, int e,int ret[])
     else if(out[i]>120)
       ret[i]=120;
   }
+  digitalWrite(feedback,1);
   return ret;
 }
